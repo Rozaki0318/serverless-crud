@@ -3,6 +3,7 @@ How to start dev of lambda with dynamodb at local env
 Sam, aws-cli, docker are required.
 
 $ sam init
+```
 Which template source would you like to use?
 	1 - AWS Quick Start Templates
 	2 - Custom Template Location
@@ -53,7 +54,7 @@ Commands you can use next
 [*] Create pipeline: cd serverless-crud && sam pipeline init --bootstrap
 [*] Validate SAM template: cd serverless-crud && sam validate
 [*] Test Function in the Cloud: cd serverless-crud && sam sync --stack-name {stack-name} --watch
-
+```
 Create docker network(external) to access from sam to local dyanamodb
 $ docker network create lambda-local
 $ docker network ls 
