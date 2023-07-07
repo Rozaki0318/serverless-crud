@@ -55,13 +55,15 @@ Commands you can use next
 [*] Validate SAM template: cd serverless-crud && sam validate
 [*] Test Function in the Cloud: cd serverless-crud && sam sync --stack-name {stack-name} --watch
 ```
+
 Create docker network(external) to access from sam to local dyanamodb
+
 $ docker network create lambda-local
 $ docker network ls 
 $ cd servereless-crud
 $ mkdir local-containers&&cd local-containers
 $ vi docker-compose.yml
-------------------------------------------------
+```
    version: '3.8'
    services:
      dynamodb-local:
@@ -88,12 +90,14 @@ $ vi docker-compose.yml
    networks:
      lambda-local:
        external: true
-------------------------------------------------
+```
 
 $ docker-compose up -d
 
 Update directory name helloworld to read
+
 Update app.py to pull data from dynamodb by boto3
+
 Update template.yml to change CodeUri, Path and Name of Function&Events
 
 $ sam build && sam local start-api --docker-network lambda-local
