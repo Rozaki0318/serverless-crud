@@ -1,0 +1,38 @@
+CRUD Local dynamodb
+
+[Create]
+Create table
+PartitionKey is HASH, SortKey is RANGE
+$ aws dynamodb create-table --table-name 'cities' --attribute-definitions '[{"AttributeName":"key","AttributeType": "S"}]' --key-schema '[{"AttributeName":"key","KeyType": "HASH"}]' --provisioned-throughput '{"ReadCapacityUnits": 5,"WriteCapacityUnits": 5}' --endpoint-url http://localhost:8000
+
+Insert data
+$ aws dynamodb put-item --table-name SampleTable --item '{"name":{"S":"hoge"}, "id":{"S":"134"}}' --endpoint-url http://localhost:8000
+
+Insert multiple data
+None
+
+[Read]
+List tables
+$ aws dynamodb list-tables --endpoint-url http://localhost:8000
+
+Show schema of table
+$ aws dynamodb describe-table --table-name [TableName] --endpoint-url http://localhost:8000
+
+Show Number of records
+$ aws dynamodb scan --table-name [TableName] --select "COUNT" --endpoint-url http://localhost:8000
+
+Scan all data
+$ aws dynamodb scan --table-name [TableName] --endpoint-url http://localhost:8000
+
+Get Item
+$ aws dynamodb get-item --table-name SampleTable --key '{"id":{"S": "131"}}' --endpoint-url http://localhost:8000
+
+[Update]
+Update data
+
+Update multiple data
+
+[Delete]
+Delete data
+
+Delete multiple data
