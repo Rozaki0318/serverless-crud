@@ -59,10 +59,15 @@ Commands you can use next
 Create docker network(external) to access from sam to local dyanamodb
 
 $ docker network create lambda-local
+
 $ docker network ls 
+
 $ cd servereless-crud
+
 $ mkdir local-containers&&cd local-containers
+
 $ vi docker-compose.yml
+
 ```
    version: '3.8'
    services:
