@@ -19,9 +19,8 @@
           return res.json();
         })
         .then(data => {
-          console.log(data[0].Data.Items);
           data[0].Data.Items.forEach(user => {
-            const markup = `<li>${user.name.S}</li>`;
+            const markup = `<li>${user.id.S}: ${user.name.S}</li>`;
 
             document.querySelector('ul').insertAdjacentHTML('beforeend', markup);
           });
