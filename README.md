@@ -1,4 +1,4 @@
-How to start dev of lambda with dynamodb at local env
+# How to start dev of lambda with dynamodb at local env
 
 Sam, aws-cli, docker are required.
 
