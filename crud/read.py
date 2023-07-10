@@ -3,7 +3,9 @@ import boto3
 import logging
 
 def lambda_handler(event, context):
-    print("CRUD FUNCTION")
+    print("READ OF CRUD FUNCTION")
+    print(event)
+    print("HTTP METHOD: {}".format(event['httpMethod']))
 
     dynamodb_client = boto3.client('dynamodb', endpoint_url='http://dynamodb-local:8000')
 

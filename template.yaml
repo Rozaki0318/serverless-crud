@@ -11,11 +11,11 @@ Globals:
     MemorySize: 128
 
 Resources:
-  CRUDFunction:
+  ReadFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: read/
-      Handler: app.lambda_handler
+      CodeUri: crud/
+      Handler: read.lambda_handler
       Runtime: python3.9
       Architectures:
         - x86_64
@@ -23,8 +23,22 @@ Resources:
         CRUD:
           Type: Api
           Properties:
-            Path: /read
+            Path: /
             Method: get
+  CreateFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: crud/
+      Handler: create.lambda_handler
+      Runtime: python3.9
+      Architectures:
+        - x86_64
+      Events:
+        CRUD:
+          Type: Api
+          Properties:
+            Path: /
+            Method: post
 
 Outputs:
   HelloWorldApi:

@@ -11,7 +11,23 @@
       <ul>
       </ul>
     </div>
+
+    <div>
+      <h1>Input form:</h1>
+      <form class="form">
+        <label for="id">Id:</label>
+        <input type="text" name="id"></input>
+        <label for="name">Name:</label>
+        <input type="text" name="name"></input>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
     <script>
+
+
+
+
       function compare(a, b){
         var r = 0;
         if( a.id.S < b.id.S ){ r = -1; }
@@ -22,7 +38,7 @@
 
       const listEl = document.querySelector('ul');
 
-      fetch('http://127.0.0.1:3000/read')
+      fetch('http://127.0.0.1:3000/')
         .then(res => {
           return res.json();
         })
@@ -34,7 +50,27 @@
           });
         })
         .catch(error => console.log(error));
+      
+      const formEl = document.querySelector('.form');
+      formEl.addEventListener('submit', event => {
+        event.preventDefault();
 
+        const formData = new FormData(formEl);
+        const data = Object.fromEntries(formData);
+
+        console.log(data);
+      
+      fetch('http://127.0.0.1:3000/', {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        }).then(res => res.json())
+        .then(data => console.log(data))
+        .catch(error => console.log(error));
+      });
 
     </script>
   </body>
