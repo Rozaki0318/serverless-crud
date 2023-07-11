@@ -23,11 +23,17 @@
       </form>
     </div>
 
+    <div>
+      <h1>Delete form:</h1>
+      <form class="dform">
+        <label for="id">Id:</label>
+        <input type="text" name="id"></input>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
     <script>
-
-
-
-
+// scan item
       function compare(a, b){
         var r = 0;
         if( a.id.S < b.id.S ){ r = -1; }
@@ -50,7 +56,7 @@
           });
         })
         .catch(error => console.log(error));
-      
+// insert item      
       const formEl = document.querySelector('.form');
       formEl.addEventListener('submit', event => {
         event.preventDefault();
@@ -72,6 +78,27 @@
         .catch(error => console.log(error));
       });
 
+//delete item
+      const dformEl = document.querySelector('.dform');
+      dformEl.addEventListener('submit', event => {
+        event.preventDefault();
+
+        const dformData = new FormData(dformEl);
+        const ddata = Object.fromEntries(dformData);
+
+        console.log(ddata);
+      
+      fetch('http://127.0.0.1:3000/', {
+          method: 'DELETE',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(ddata)
+        }).then(res => res.json())
+        .then(ddata => console.log(ddata))
+        .catch(error => console.log(error));
+      });
     </script>
   </body>
 </html>

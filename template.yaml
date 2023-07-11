@@ -39,6 +39,20 @@ Resources:
           Properties:
             Path: /
             Method: post
+  DeleteFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: crud/
+      Handler: delete.lambda_handler
+      Runtime: python3.9
+      Architectures:
+        - x86_64
+      Events:
+        CRUD:
+          Type: Api
+          Properties:
+            Path: /
+            Method: delete
 
 Outputs:
   HelloWorldApi:
