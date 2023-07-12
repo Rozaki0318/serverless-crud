@@ -90,8 +90,9 @@
       
       fetch('http://127.0.0.1:3000/', {
           method: 'DELETE',
-          mode: 'no-cors',
           headers: {
+            'Access-Control-Request-Method': 'DELETE',
+            'Access-Control-Request-Headers': 'Content-Type',
             'Content-Type': 'application/json'
           },
           body: JSON.stringify(ddata)

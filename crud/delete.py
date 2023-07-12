@@ -15,12 +15,13 @@ def lambda_handler(event, context):
     data = json.loads(event['body'])
     print(data)
     print(data['id'])
-    print(data['name'])
+    #print(data['name'])
 
     res = dynamodb_client.delete_item(
         TableName=table,
         Key={
-            "id": {"S": data['id']}
+            "id": {"S": data['id']},
+            #"name": {"S": data['name']}
         }
     )
     print(res)
@@ -29,6 +30,8 @@ def lambda_handler(event, context):
         "statusCode": 200,
         "headers":{
             "Access-Control-Allow-Origin": "*",
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Methods': 'OPTIONS,DELETE'
         },
         "body": json.dumps(
             [{

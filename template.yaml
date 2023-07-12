@@ -6,6 +6,11 @@ Description: >
   Sample SAM Template for serverless-crud
 
 Globals:
+  Api:
+    Cors:
+      AllowMethods: "'GET,POST,DELETE,OPTIONS'"
+      AllowHeaders: "'Content-Type,Access-Control-Allow-Origin'"
+      AllowOrigin: "'http://localhost:8001'"
   Function:
     Timeout: 3
     MemorySize: 128
