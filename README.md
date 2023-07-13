@@ -2,6 +2,11 @@
 
 Sam, aws-cli, docker are required.
 
+SAM CLI, version 1.88.0
+aws-cli/2.0.7 Python/3.7.4 Darwin/22.2.0 botocore/2.0.0dev11
+Docker version 20.10.11, build dea9396
+docker-compose version 1.29.2, build 5becea4c
+
 $ sam init
 ```
 Which template source would you like to use?
@@ -106,5 +111,4 @@ Update app.py to pull data from dynamodb by boto3
 Update template.yml to change CodeUri, Path and Name of Function&Events
 
 $ sam build && sam local start-api --docker-network lambda-local
-
 
