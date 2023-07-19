@@ -22,7 +22,16 @@
         <button type="submit">Submit</button>
       </form>
     </div>
-
+    <div>
+      <h1>Update form:</h1>
+      <form class="uform">
+        <label for="id">Id:</label>
+        <input type="text" name="id"></input>
+        <label for="name">Name:</label>
+        <input type="text" name="name"></input>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
     <div>
       <h1>Delete form:</h1>
       <form class="dform">
@@ -74,10 +83,31 @@
           },
           body: JSON.stringify(data)
         }).then(res => res.json())
+        .then(udata => console.log(udata))
+        .catch(error => console.log(error));
+      });
+// update item      
+const uformEl = document.querySelector('.uform');
+      uformEl.addEventListener('submit', event => {
+        event.preventDefault();
+
+        const uformData = new FormData(uformEl);
+        const udata = Object.fromEntries(uformData);
+
+        console.log(udata);
+      
+      fetch('http://127.0.0.1:3000/', {
+        method: 'PUT',
+          headers: {
+            'Access-Control-Request-Method': 'PUT',
+            'Access-Control-Request-Headers': 'Content-Type',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(udata)
+        }).then(res => res.json())
         .then(data => console.log(data))
         .catch(error => console.log(error));
       });
-
 //delete item
       const dformEl = document.querySelector('.dform');
       dformEl.addEventListener('submit', event => {

@@ -8,7 +8,7 @@ Description: >
 Globals:
   Api:
     Cors:
-      AllowMethods: "'GET,POST,DELETE,OPTIONS'"
+      AllowMethods: "'GET,POST,PUT,DELETE,OPTIONS'"
       AllowHeaders: "'Content-Type,Access-Control-Allow-Origin'"
       AllowOrigin: "'http://localhost:8001'"
   Function:
@@ -44,6 +44,20 @@ Resources:
           Properties:
             Path: /
             Method: post
+  UpdateFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: crud/
+      Handler: update.lambda_handler
+      Runtime: python3.9
+      Architectures:
+        - x86_64
+      Events:
+        CRUD:
+          Type: Api
+          Properties:
+            Path: /
+            Method: put
   DeleteFunction:
     Type: AWS::Serverless::Function
     Properties:
